@@ -1,0 +1,19 @@
+// ==UserScript==
+// @name         PageToMDLink
+// @namespace    http://tampermonkey.net/
+// @version      1
+// @description  Copy url as MD link
+// @author       tihory
+// @match        *://*/*
+// @grant        unsafeWindow
+// @grant        GM_registerMenuCommand
+// @grant        GM_setClipboard
+// ==/UserScript==
+
+(function() {
+    'use strict';
+    GM_registerMenuCommand('Run this now', function() {
+        GM_setClipboard ("[" + unsafeWindow.document.title + "](" + unsafeWindow.location.href + ")");
+        unsafeWindow.alert("Link copied to clipboard");
+    }, 'r');
+})();
